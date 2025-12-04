@@ -1,7 +1,7 @@
 
 import os
 os.environ["LITELLM_MODEL_PROVIDER"] = "gemini"
-os.environ["GEMINI_API_KEY"] = "AIzaSyBIUiyk-Ksb0j3UxOzJqrTxqnNffzG_Y2M"
+os.environ["GEMINI_API_KEY"] = "AIzaSyAm62k_mpMqcdQn8q3IqCjaOP4bCtE-qzE"
 
 import asyncio  # Add this import near the top with others
 import pickle
@@ -544,7 +544,7 @@ def sidebar_accordion():
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-2.5-pro",
-                "gemini-3.0-pro"
+                "gemini-3-pro-preview"
             ]
             st.session_state['selected_model'] = st.radio(
                 "Choose LLM:",
@@ -1154,7 +1154,7 @@ def get_llminfo():
                             "gemini-2.5-flash",
                             "gemini-2.5-flash-lite",
                             "gemini-2.5-pro",
-                            "gemini-3.0-pro"),
+                            "gemini-3-pro-preview"),
                            help=tip1,
                            key="model_select",
                            on_change=lambda: setattr(st.session_state, 'selected_model', st.session_state.model_select))
@@ -2051,7 +2051,7 @@ def crewai_web_search(url, question):
         from crewai_tools import WebsiteSearchTool
         import os
         # Use only environment variable for GEMINI_API_KEY (never Vertex AI)
-        gemini_api_key = os.environ.get("GEMINI_API_KEY") or "AIzaSyBIUiyk-Ksb0j3UxOzJqrTxqnNffzG_Y2M"
+        gemini_api_key = os.environ.get("GEMINI_API_KEY") or "AIzaSyAm62k_mpMqcdQn8q3IqCjaOP4bCtE-qzE"
         os.environ["GEMINI_API_KEY"] = gemini_api_key  # Ensure it's set for subprocesses
         # Only use Gemini model string, never Vertex AI
         model_str = "gemini/gemini-1.5-flash"  # or "gemini/gemini-2.0-flash" if you want
@@ -6260,7 +6260,7 @@ Provide a comprehensive answer that takes into account information from all the 
                 num_images = 1
             try:
                 # Use API key for image generation (no project/location needed)
-                VERTEX_API_KEY = "AIzaSyBIUiyk-Ksb0j3UxOzJqrTxqnNffzG_Y2M"
+                VERTEX_API_KEY = "AIzaSyAm62k_mpMqcdQn8q3IqCjaOP4bCtE-qzE"
 
                 client = genai_new.Client(api_key=VERTEX_API_KEY)
                 image_response = client.models.generate_images(
@@ -7777,4 +7777,5 @@ Provide a comprehensive answer that takes into account information from all the 
                 st.error("No files were successfully processed. Please check your file formats and try again.")
 
 if __name__ == '__main__':
+
     main()
